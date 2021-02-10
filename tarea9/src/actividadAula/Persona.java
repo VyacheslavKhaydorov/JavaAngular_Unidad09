@@ -54,6 +54,16 @@ abstract class Persona {
 	}
 
 
+	public boolean getAsistencia() {
+		return asistencia;
+	}
+
+
+	public void setAsistencia(boolean asistencia) {
+		this.asistencia = asistencia;
+	}
+
+
 	//Método que identifíca si una persona se ha presentado a la clase o no
 	public abstract boolean presenteEnClase ();
 	

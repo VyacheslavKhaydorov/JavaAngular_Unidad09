@@ -59,14 +59,14 @@ class TenemosClaseApp {
 		//Comprobamos que el profesorHoy asiste, que profesorHoy.materia y
 		//aulaHoy.materia coinciden, y recorremos el vector claseHoy y comprobamos que los
 		//alumnos asistentes son más del 50% de la ocupacionMax del aulaHoy
-		if (!profesorHoy.asistencia) 
+		if (!profesorHoy.getAsistencia()) 
 			tenemosClase = false;
 		
 		if (!profesorHoy.getMateria().equals(aulaHoy.getMateria()))
 			tenemosClase = false;
 		
 		for (Estudiante estudiante : claseHoy) {
-			if (estudiante.asistencia)
+			if (estudiante.getAsistencia())
 				numAsistentesHoy++;
 		}
 		
