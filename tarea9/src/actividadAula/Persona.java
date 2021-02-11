@@ -4,7 +4,7 @@
 package actividadAula;
 
 /**
- * @author viach
+ * @author equipo_5
  * Superclase abstracta Persona, clase padre de Estudiante y Profesor
  */
 abstract class Persona {
@@ -51,16 +51,6 @@ abstract class Persona {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
-	}
-
-
-	public boolean getAsistencia() {
-		return asistencia;
-	}
-
-
-	public void setAsistencia(boolean asistencia) {
-		this.asistencia = asistencia;
 	}
 
 

@@ -6,7 +6,7 @@ package actividadAula;
 import java.util.concurrent.ThreadLocalRandom;	//Para generar valores aleatorios
 
 /**
- * @author viach
+ * @author equipo_5
  * Subclase de Persona, clase Profesor
  */
 class Profesor extends Persona {

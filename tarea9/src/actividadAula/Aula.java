@@ -4,7 +4,7 @@
 package actividadAula;
 
 /**
- * @author viach
+ * @author equipo_5
  * Clase Aula
  */
 class Aula {
