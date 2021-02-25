@@ -4,19 +4,13 @@
 package seriesYVideojuegos;
 
 /**
- * @author viach
+ * @author Equipo_5
  * Interfaz Entregable
  */
-interface Entregable {
-
+public interface Entregable {
 	//Métodos
-	void entregar();		//this.prestado = true;
-	
-	void devolver();		//this.prestado = false;
-	
-	void isEntregado();		//Estado del atributo prestado
-	
-	int compareTo(Object a);//Comparamos las horas estimadas en los videojuegos y el número
-							//de temporadas en las series
-	
+	public boolean entregar();
+	boolean devolver();
+	void isEntregado();
+
 }

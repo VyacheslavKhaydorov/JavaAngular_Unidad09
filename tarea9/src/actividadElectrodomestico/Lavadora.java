@@ -4,7 +4,7 @@
 package actividadElectrodomestico;
 
 /**
- * @author viach
+ * @author equipo_5
  * Subclase Lavadora.
  */
 class Lavadora extends Electrodomestico{
@@ -44,13 +44,23 @@ class Lavadora extends Electrodomestico{
 	}
 	
 	//Método padre precioFinal modificado para añadirle modificación de precio por carga
-	public double precioFinal() {
-		super.precioFinal();
+	public double precioFinal(double precioInicial) {
+		
+		double precioFinal = super.precioFinal(precioInicial);
 		
 		//Modificamos el precio en función de la carga
 		if (carga > 30)
-			this.precioBase += 50;
-		return this.precioBase;
+			precioFinal += 50;
+		
+		return precioFinal;
+		
+	}
+	
+	//Metodo toString
+	@Override
+	public String toString() {
+		return "Lavadora [precioBase=" + precioBase + ", color=" + color + ", consumoEnergetico="
+				+ consumoEnergetico + ", peso=" + peso + ", carga=" + carga + "]";
 	}
 
 }

@@ -3,10 +3,8 @@
  */
 package actividadElectrodomestico;
 
-import java.util.Scanner;
-
 /**
- * @author viach
+ * @author equipo_5
  * Clase ejecutable que crea un vector de 10 electrodomésticos y calcula el precio de
  * los electrodomesticos, todos juntos, y las lavadoras y las televisiones por separado
  */
@@ -18,47 +16,39 @@ class PrecioElectrodomesticosApp {
 	public static void main(String[] args) {
 		//Variables
 		Electrodomestico vectorElectrodomesticos[] = new Electrodomestico[LONGITUD_VECTOR];
+		double sumaLavadora = 0;
+		double sumaElectrodomestico = 0;
+		double sumaTelevision = 0;
 		
 		//Llenamos el vectorElectrodomesticos
-		vectorElectrodomesticos[0] = new Electrodomestico();
-		vectorElectrodomesticos[1] = new Electrodomestico();
-		vectorElectrodomesticos[2] = new Electrodomestico();
-		vectorElectrodomesticos[3] = new Electrodomestico();
-		vectorElectrodomesticos[4] = new Electrodomestico();
-		vectorElectrodomesticos[5] = new Electrodomestico();
-		vectorElectrodomesticos[6] = new Electrodomestico();
-		vectorElectrodomesticos[7] = new Electrodomestico();
-		vectorElectrodomesticos[8] = new Electrodomestico();
-		vectorElectrodomesticos[9] = new Electrodomestico();
+		vectorElectrodomesticos [0] = new Lavadora (100, "Blanco", 'A', 50, 40);
+		vectorElectrodomesticos [1] = new Electrodomestico (50, "Rojo", 'B', 5);
+		vectorElectrodomesticos [2] = new Television (150, "Negro", 'C', 20, 45, true);
+		vectorElectrodomesticos [3] = new Television (150, "Azul", 'D', 15, 20, false);
+		vectorElectrodomesticos [4] = new Lavadora (200, "Gris", 'A', 100, 40);
+		vectorElectrodomesticos [5] = new Electrodomestico (50, "Blanco", 'E', 30);
+		vectorElectrodomesticos [6] = new Electrodomestico (70, "Azul", 'F', 25);
+		vectorElectrodomesticos [7] = new Television (120, "Blanco", 'B', 50, 35, true);
+		vectorElectrodomesticos [8] = new Lavadora (100, "Negro", 'C', 70, 35);
+		vectorElectrodomesticos [9] = new Electrodomestico (170, "Gris", 'A', 100);
 		
-		//Creamos un nuevo Scanner
-		Scanner input = new Scanner(System.in);
-		
-		//Entrada de datos por teclado
-		System.out.println("Introduce las características de 10 electrodomésticos:");
-		for (int i = 0; i < vectorElectrodomesticos.length; i++) {
-			introduceElectrodomestico();
-			System.out.println("Quedan " + (vectorElectrodomesticos.length - 1 - i) + " electrodomésticos "
-					+ "por introducir.");
+		for (Electrodomestico e : vectorElectrodomesticos){
+			if (e instanceof Lavadora) {
+				sumaLavadora += e.precioFinal(e.getPrecioBase());
+			}
+			if (e instanceof Electrodomestico) {
+				sumaElectrodomestico += e.precioFinal(e.getPrecioBase());
+			}
+			if (e instanceof Television) {
+				sumaTelevision +=  e.precioFinal(e.getPrecioBase());;
+			}
+			System.out.println(e.toString());
+			System.out.println();
+	}
+		System.out.println("El precio de todas las lavadoras és = " + sumaLavadora);
+		System.out.println("El precio de todos los electrodomésticos és = " + sumaElectrodomestico);
+		System.out.println("El precio de todas las televisiones és = " + sumaTelevision);
+			
 		}
-		
-		//Salida por consola
-		
-		
-	}
-	
-	//Método de entrada de datos
-	public static void introduceElectrodomestico () {
-		System.out.println("Qué electrodoméstico vas a ");
-		
-		
-	}
-	
-	//Método para mostrar un vector de objetos por consola
-	/*public static void mostrarObjetos (Electrodomestico vectorObjetos[]) {
-		for (Electrodomestico electrodomestico: vectorObjetos[])
-			System.out.println(electrodomestico.getPrecioBase(), electrodomestico.getColor(), electrodomestico.getConsumoEnergetico(), electrodomestico.getPeso());
-	
-	}*/
 
 }

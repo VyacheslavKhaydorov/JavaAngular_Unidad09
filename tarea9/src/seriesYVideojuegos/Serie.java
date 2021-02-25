@@ -4,103 +4,100 @@
 package seriesYVideojuegos;
 
 /**
- * @author viach
+ * @author equipo_5
  * Clase Serie
  */
-class Serie {
-	
+public class Serie implements Entregable {
 	//Atributos
-	private String titulo;
-	private int numeroTemporadas;
-	private boolean prestado;
-	private String genero;
-	private String creador;
+	protected String titulo;
+	protected int numTemporadas;
+	protected boolean entregado;
+	protected String genero;
+	protected String creador;
 	
+	//Constantes
+	private final int numTemporadas_DEF = 3;
+	private final boolean entregado_DEF = false;
 	
 	//Constructores
+	//Constructor por defecto
 	public Serie() {
+		this.titulo = null;
+		this.numTemporadas = numTemporadas_DEF;
+		this.entregado = entregado_DEF;
+		this.genero = null;
+		this.creador = null;
 	}
 
-
+	//Constructor con el titulo y el creador
 	public Serie(String titulo, String creador) {
 		this.titulo = titulo;
 		this.creador = creador;
 	}
 
-
-	public Serie(String titulo, int numeroTemporadas, String genero, String creador) {
+	//Constructor con todos los atributos, excepto entregado
+	public Serie(String titulo, int numTemporadas, String genero, String creador) {
 		this.titulo = titulo;
-		this.numeroTemporadas = numeroTemporadas;
+		this.numTemporadas = numTemporadas;
 		this.genero = genero;
 		this.creador = creador;
 	}
 
-
-	//Getters y setters
 	public String getTitulo() {
 		return titulo;
 	}
-
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-
-	public int getNumeroTemporadas() {
-		return numeroTemporadas;
+	public int getNumTemporadas() {
+		return numTemporadas;
 	}
 
-
-	public void setNumeroTemporadas(int numeroTemporadas) {
-		this.numeroTemporadas = numeroTemporadas;
+	public void setNumTemporadas(int numTemporadas) {
+		this.numTemporadas = numTemporadas;
 	}
-
 
 	public String getGenero() {
 		return genero;
 	}
 
-
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
 
 	public String getCreador() {
 		return creador;
 	}
 
-
 	public void setCreador(String creador) {
 		this.creador = creador;
 	}
-	
-	
-	//Métodos
-	public String toString() {	//@override
-		return "Título: " + titulo + " | Creador: " + creador + " | Género: " + genero
-				+ " | Número de temporadas: " + numeroTemporadas + " | Prestado: " + prestado;
+
+	//Métodos de la interfaz
+	@Override
+	public boolean entregar() {
+		entregado = true;
+		return entregado;
 	}
-	
-	public void entregar() {
-		this.prestado = true;
-	}		
-	
-	void devolver() {
-		this.prestado = false;
+
+	@Override
+	public boolean devolver() {
+		entregado = false;
+		return entregado;
 	}
-	
-	void isEntregado() {
-		System.out.println("Prestado: " + prestado);
+
+	@Override
+	public void isEntregado() {
+		System.out.println("Entregado: " + entregado);
 	}
-	
-	int compareTo(Object a) {
-		//Variables
-		int valorComparativa;
-		
-		
-		return valorComparativa;
-	}
+
+	//Método toString
+	@Override
+	public String toString() {
+		return "[titulo=" + titulo + ", numTemporadas=" + numTemporadas + ", entregado=" + entregado + ", genero="
+				+ genero + ", creador=" + creador + "]";
+	}	
 	
 }

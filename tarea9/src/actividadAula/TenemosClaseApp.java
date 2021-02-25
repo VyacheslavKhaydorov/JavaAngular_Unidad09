@@ -6,8 +6,8 @@ package actividadAula;
 /**
  * @author equipo_5
  * Clase ejecutable que se encarga de instanciar todos los objetos de las clases Aula, Profesor
- * y Estudiante, y despu�s comprueba si tenemos clase llamando al m�todo consultaClase. En caso
- * de que sea as�, llamamos al m�todo alumnesAprobados y mostramos cuantos alumnos y cuantas
+ * y Estudiante, y despues comprueba si tenemos clase llamando al metodo consultaClase. En caso
+ * de que sea asi, llamamos al metodo alumnesAprobados y mostramos cuantos alumnos y cuantas
  * alumnas han aprobado.
  */
 class TenemosClaseApp {
@@ -39,7 +39,7 @@ class TenemosClaseApp {
 		aulaHoy = new Aula(123, 10, "filosofia");
 		
 		
-		//Llamada al m�todo consultaClase
+		//Llamada al metodo consultaClase
 		tenemosClase = consultaClase(claseHoy, profesorHoy, aulaHoy);
 		
 		
@@ -47,7 +47,7 @@ class TenemosClaseApp {
 		System.out.println("\nSe ha realizado la clase \n");
 		}
 		else {System.out.println("\nNo se ha realizado la clase \n");}
-		//Si hay clase llamamos al m�todo para mostrar aprobados
+		//Si hay clase llamamos al metodo para mostrar aprobados
 		if (tenemosClase)
 			estudiantesAprobados(claseHoy);
 			
@@ -63,7 +63,7 @@ class TenemosClaseApp {
 		
 		//Comprobamos que el profesorHoy asiste, que profesorHoy.materia y
 		//aulaHoy.materia coinciden, y recorremos el vector claseHoy y comprobamos que los
-		//alumnos asistentes son m�s del 50% de la ocupacionMax del aulaHoy
+		//alumnos asistentes son mas del 50% de la ocupacionMax del aulaHoy
 		if (!profesorHoy.asistencia) {
 			tenemosClase = false;
 		System.out.println("El Profesor no ha venido");
@@ -100,7 +100,7 @@ class TenemosClaseApp {
 		//Recorremos el vector de estudiantes
 		for (Estudiante estudiante : claseHoy) {
 			calificacion = estudiante.getCalificacion();
-			if (calificacion >= 5) {	//Est�n aprobados
+			if (calificacion >= 5) {	//Estan aprobados
 				if (estudiante.getSexo() == "hombre") {
 					hombresAprobados[i] = estudiante;
 					i++;
@@ -116,7 +116,7 @@ class TenemosClaseApp {
 		System.out.println("Los Alumnos aprobados son:");
 		for (i = 0; (hombresAprobados[i] != null) && (i < hombresAprobados.length) ;i++) {
 			System.out.println(hombresAprobados[i].toString());		//Sin toString nos devuelve
-																	//direcci�n de memoria
+																	//direccion de memoria
 		}
 		System.out.println("\nEn total han aprobado " +j + " Chicos.");
 		

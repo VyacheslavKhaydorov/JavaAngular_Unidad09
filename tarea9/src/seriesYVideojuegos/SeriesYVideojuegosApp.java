@@ -4,22 +4,27 @@
 package seriesYVideojuegos;
 
 /**
- * @author viach
+ * @author equipo_5
  *
  */
 class SeriesYVideojuegosApp {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
+		//Creamos los dos vectores
+		Serie [] series = new Serie [5];
+		Videojuego [] videojuegos = new Videojuego [5];
 		
-		//Variables
-		Serie vectorSeries[] = new Serie[5];
-		Videojuego vectorVideojuegos[] = new Videojuego[5];
+		//Llenamos los vectores
+		Metodos.llenarVectores (series, videojuegos);
 		
-		//Llenamos ambos vectores
+		//Entregamos algunas series y videojuegos
+		Metodos.SeriesVideojuegosEntregados(series, videojuegos);
 		
+		//Contar cuantas series y videojuegos hay entregados
+		Metodos.contarSeriesVideojuegos(series, videojuegos);
+	
+		//Mostrar el videojuego que tenga más horas estimadas y la serie que tenga más temporadas
+		Metodos.masHoras_temporadas(videojuegos, series);
 	}
 
 }

@@ -4,7 +4,7 @@
 package actividadElectrodomestico;
 
 /**
- * @author viach
+ * @author equipo_5
  * Subclase Television.
  */
 class Television extends Electrodomestico {
@@ -58,17 +58,25 @@ class Television extends Electrodomestico {
 	
 	//Método padre precioFinal modificado para añadirle modificación de precio por resolucion
 	//y sintonizadorTDT incorporado
-	public double precioFinal() {
-		super.precioFinal();
+	public double precioFinal(double precioInicial) {
+		
+		double precioFinal = super.precioFinal(precioInicial);
 		
 		//Modificamos el precio en función de la resolucion
 		if (resolucion > 40)
-			this.precioBase += this.precioBase * 0.3;
-		//MOdificamos el precio si incorpora el sintonizadorTDT
+			precioFinal += precioFinal * 0.3;
+		//Modificamos el precio si incorpora el sintonizadorTDT
 		if (sintonizadorTDT)
-			this.precioBase += 50;
+			precioFinal += 50;
 		
-		return this.precioBase;
+		return precioFinal;
+	}
+	
+	//Metodo toString
+	@Override
+	public String toString() {
+		return "Television [precioBase=" + precioBase + ", color=" + color + ", consumoEnergetico=" + consumoEnergetico +
+				", peso=" + peso + ", resolucion=" + resolucion + ", sintonizadorTDT=" + sintonizadorTDT + "]";
 	}
 	
 }

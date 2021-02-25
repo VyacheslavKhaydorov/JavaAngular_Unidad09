@@ -3,27 +3,20 @@
  */
 package actividadElectrodomestico;
 
+import java.util.Arrays;
+
 /**
- * @author viach
+ * @author equipo_5
  * Superclase Electrodomestico.
  */
 class Electrodomestico {
 	//Constantes
-	public final double PRECIO_BASE = 100;			//Precio
-	public final String BLANCO = "blanco";			//Color
-	public final String NEGRO = "negro";
-	public final String ROJO = "rojo";
-	public final String AZUL = "azul";
-	public final String GRIS = "gris";
-	public final String COLOR_DEFAULT = BLANCO;	
-	public final char CONSUMO_A = 'A';				//Consumo
-	public final char CONSUMO_B = 'B';
-	public final char CONSUMO_C = 'C';
-	public final char CONSUMO_D = 'D';
-	public final char CONSUMO_E = 'E';
-	public final char CONSUMO_F = 'F';
-	public final char CONSUMO_DEFAULT = CONSUMO_A;
-	public final double PESO_BASE = 5;				//Peso
+	public final double PRECIO_BASE = 100;
+	public final String[] colores = {"blanco", "negro", "rojo", "azul", "gris"};
+	public final String COLOR_DEFAULT = "blanco";
+	public final char [] VALORES_CONSUMO_ENERGETICO = {'A','B','C','D','E','F'};
+	public final char CONSUMO_DEFAULT = 'F';
+	public final double PESO_BASE = 5;
 	
 	//Atributos
 	protected double precioBase;
@@ -43,9 +36,9 @@ class Electrodomestico {
 	//Constructor con precioBase y peso como parámetros
 	public Electrodomestico(double precioBase, double peso) {
 		this.precioBase = precioBase;
-		this.color = BLANCO;
-		this.consumoEnergetico = CONSUMO_F;
-		this.peso = peso;	
+		this.color = COLOR_DEFAULT;
+		this.consumoEnergetico = CONSUMO_DEFAULT;
+		this.peso = peso;
 	}
 	
 	//Constructor con precioBase, color, consumoEnergetico y peso (todos los atributos) como parámetros
@@ -95,93 +88,78 @@ class Electrodomestico {
 
 	//Método control atributo color
 	private String comprobarColor (String color) {
-		color.toLowerCase();
-		switch (color) {
-			case "blanco":
-				this.color = BLANCO;
-				break;
-			case "negro":
-				this.color = NEGRO;
-				break;
-			case "rojo":
-				this.color = ROJO;
-				break;
-			case "azul":
-				this.color = AZUL;
-				break;
-			case "gris":
-				this.color = GRIS;
-				break;
-			default:
-				this.color = COLOR_DEFAULT;
-		}
 		
-		return this.color;
+		color.toLowerCase();
+		if (!(Arrays.asList(colores).contains(color)))
+			color = COLOR_DEFAULT;
+		
+		return color;
+		
 	}
 	
 	//Método control atributo consumoEnergetico
-	private char comprobarConsumoEnergetico (char letra) {
-		switch (letra) {
-			case 'A', 'a':
-				this.consumoEnergetico = CONSUMO_A;
-				break;
-			case 'B', 'b':
-				this.consumoEnergetico = CONSUMO_B;
-				break;
-			case 'C', 'c':
-				this.consumoEnergetico = CONSUMO_C;
-				break;
-			case 'D', 'd':
-				this.consumoEnergetico = CONSUMO_D;
-				break;
-			case 'E', 'e':
-				this.consumoEnergetico = CONSUMO_E;
-				break;
-			case 'F', 'f':
-				this.consumoEnergetico = CONSUMO_F;
-				break;
-			default:
-				this.consumoEnergetico = CONSUMO_DEFAULT;
+	private char comprobarConsumoEnergetico (char consumoEnergetico) {
+		boolean bien = false;
+		
+		for (int i = 0; i < VALORES_CONSUMO_ENERGETICO.length; i++) {
+		if (consumoEnergetico == VALORES_CONSUMO_ENERGETICO[i]) {
+			bien = true;
+		}
 		}
 		
-		return this.consumoEnergetico;
+		if (bien == true) {
+			return consumoEnergetico;
+		}
+		else {
+			return CONSUMO_DEFAULT;
+		}
 	}
 	
 	//Método para modificar el precio final del producto en
 	//función de su peso y de su consumoEnergético
-	public double precioFinal() {
+	public double precioFinal(double precioInicial) {
+		
+		double precioFinal = precioInicial;;
+		
 		//Modificamos precio según consumoEnergetico
 		switch (this.consumoEnergetico) {
 			case 'A':
-				this.precioBase += 100;
+				precioFinal = precioInicial + 100;
 				break;
 			case 'B':
-				this.precioBase += 80;
+				precioFinal = precioInicial + 80;
 				break;
 			case 'C':
-				this.precioBase += 60;
+				precioFinal = precioInicial + 60;
 				break;
 			case 'D':
-				this.precioBase += 50;
+				precioFinal = precioInicial + 50;
 				break;
 			case 'E':
-				this.precioBase += 30;
+				precioFinal = precioInicial + 30;
 				break;
 			case 'F':
-				this.precioBase += 10;
+				precioFinal = precioInicial + 10;
 		}
 		
 		//Modificamos precio según tamaño (peso)
 		if (peso >= 0 && peso < 20)
-			this.precioBase += 10;
+			precioFinal += 10;
 		else if (peso >= 20 && peso < 50)
-			this.precioBase += 50;
+			precioFinal += 50;
 		else if (peso >= 50 && peso < 80)
-			this.precioBase += 80;
+			precioFinal += 80;
 		else if (peso >= 80)
-			this.precioBase += 100;
+			precioFinal += 100;
 		
-		return this.precioBase;
+		return precioFinal;
+	}
+	
+	//Metodo toString
+	@Override
+	public String toString() {
+		return "Electrodomestico [precio base=" + precioBase + ", color=" + color + ", consumo energético="
+				+ consumoEnergetico + ", peso=" + peso + "]";
 	}
 	
 }
